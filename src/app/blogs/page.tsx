@@ -1,4 +1,3 @@
-'use client'
 import React, { useState } from "react";
 import Image from "next/image"; // Importing Next.js Image component
 import {
@@ -10,8 +9,8 @@ import {
 } from "@/components/ui/breadcrumb";
 
 const Blog = () => {
-  // Example: Dynamic data for the blog
-  const [blogs, setBlogs] = useState([
+  // Static data for the blog (no need for setBlogs if you don't modify the data)
+  const blogs = [
     {
       id: 1,
       title: "How to Craft Beautiful Designs",
@@ -33,14 +32,13 @@ const Blog = () => {
         "Explore the latest trends in interior design and create stunning spaces.",
       image: "/l3.avif", // Replace with dynamic upload paths
     },
-  ]);
+  ];
 
-  // Example: Dynamic data for recent posts
+  // Static data for recent posts
   const recentPosts = [
     { id: 1, title: "Crafting Basics", image: "/q.jpeg" },
     { id: 2, title: "Handmade Essentials", image: "/q2.jpg" },
     { id: 3, title: "Design Tips", image: "/q3.png" },
-   
   ];
 
   return (
