@@ -1,101 +1,119 @@
-import Image from "next/image";
-
-export default function Home() {
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+export default function hero () {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      {/* Hero Section */}
+      <div className="bg-[#FBEBB5] h-screen flex">
+        {/* Left Side: Text Section */}
+        <div className="flex-1 flex items-center p-8">
+          <div className="text-left">
+            <h1 className="text-7xl text-black font-semibold">
+              Rocket SingleSeater
+            </h1>
+            <br />
+            <Link href={'/shop'} className="text-4xl text-black underline">
+              Shop Now
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        {/* Right Side: Hero Image */}
+        <div className="relative w-3/4 h-full">
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            className="object-cover w-full h-full transform scale-x-[-1] translate-x-10 translate-y-16"
+            src={'/s.png'}
+            alt="a"
+            layout="fill"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+      </div>
+
+      {/* Top Pick For You Section */}
+      <div className="bg-white h-screen flex flex-col items-center pt-16">
+        <h1 className="text-4xl font-semibold text-black mb-4">Top Pick For You</h1>
+        <p className="text-lg text-gray-500 mb-6">
+          Find a bright ideal to suit your taste with our great selection of suspension, floor, and table lights.
+        </p>
+        <div className="flex justify-between items-center space-x-6 px-8 py-8">
+          <div className="text-center">
+            <Image src={'/ch1.png'} alt="ch1" width={300} height={200} className="object-contain" />
+            <h1 className="text-black text-xl">Trenton modular sofa_3</h1>
+            <p className="text-2xl text-black font-semibold mt-2">RS. 25000.00</p>
+          </div>
+
+          <div className="text-center">
+            <Image src={'/ch2.png'} alt="ch2" width={300} height={200} className="object-contain" />
+            <h1 className="text-black text-xl">Granite dining table with dining chair</h1>
+            <p className="text-2xl text-black font-semibold mt-2">RS. 25000.00</p>
+          </div>
+
+          <div className="text-center">
+            <Image src={'/ch3.png'} alt="ch3" width={200} height={200} className="object-contain" />
+            <h1 className="text-black text-xl">Outdoor bar table and stool</h1>
+            <p className="text-2xl text-black font-semibold mt-2">RS. 25000.00</p>
+          </div>
+
+          <div className="text-center">
+            <Image src={'/ch4.png'} alt="ch4" width={300} height={200} className="object-contain" />
+            <h1 className="text-black text-xl">Trenton modular sofa_3</h1>
+            <p className="text-2xl text-black font-semibold mt-2">RS. 25000.00</p>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[#FFF9E5] h-screen flex items-center overflow-x-hidden">
+  {/* Image Section (Left Side) */}
+  <div className="flex-1">
+    <Image 
+      src={'/s1.png'} 
+      alt="s1" 
+      width={3000}  // Increase width for large size
+      height={2000}   // Increase height for large size
+      className="object-contain"
+      layout="intrinsic"  // Ensures image scales properly
+    />
+  </div>
+
+  {/* Text Section (Right Side) */}
+  <div className="flex-1 text-center px-8">
+    <h1 className="text-2xl text-black mb-4">New Arrivals</h1>
+    <h1 className="text-5xl font-bold text-black mb-4">Asgaard Sofa</h1>
+    <button className="border-2 border-black text-2xl text-black px-6 py-2">
+      Order Now
+    </button>
+  </div>
+</div>
+
+      {/* Instagram Section */}
+      <div className="relative bg-white h-screen flex justify-center pt-20">
+  {/* Image with overlay */}
+  <div className="relative w-full h-full">
+    <Image
+      src="/bg.jpeg" // Replace with your image source
+      alt="Instagram Image"
+      layout="fill"
+      objectFit="cover"
+      className="rounded-md" // Optional: add border-radius if needed
+    />
+    {/* Overlay with 50% opacity */}
+    <div className="absolute top-0 left-0 w-full h-full bg-white opacity-80"></div>
+    {/* Content on top of image */}
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10">
+      <h1 className="text-7xl font-bold text-black mb-4">
+        Our Instagram
+      </h1>
+      <p className="text-lg text-black mb-6">
+        Follow our store on Instagram
+      </p>
+      <button className="bg-[#FAF4F4] text-black py-3 px-16 rounded-full shadow-lg hover:shadow-xl text-xl focus:outline-none hover:bg-[#E8E1E1] transition-all duration-300">
+        Follow Us
+      </button>
     </div>
-  );
+  </div>
+</div>
+
+        </div>
+      
+  )
 }
