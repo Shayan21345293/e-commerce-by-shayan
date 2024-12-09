@@ -36,7 +36,7 @@ export default function Navbar() {
           >
             {menuOpen ? (
               <Image
-                src="/close.png" // Close icon for the menu
+                src="/menus.png" // Close icon for the menu
                 alt="Close Menu"
                 width={30}
                 height={30}
