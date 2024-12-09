@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen] = useState(false);
 
   return (
     <div className="bg-[#FBEBB5]">
