@@ -10,6 +10,7 @@ export default function Navbar() {
     <div className="bg-[#FBEBB5]">
       {/* Navbar Container */}
       <div className="container mx-auto px-4 md:px-10 h-[100px] flex items-center justify-between">
+        
         {/* Centered Links - Desktop */}
         <nav className="hidden md:flex space-x-10 items-center mx-auto">
           <Link href="/" className="text-black font-medium text-lg hover:underline">
@@ -35,14 +36,14 @@ export default function Navbar() {
           >
             {menuOpen ? (
               <Image
-                src="/menus.png" // Replace with your close icon image path
+                src="/close.png" // Close icon for the menu
                 alt="Close Menu"
                 width={30}
                 height={30}
               />
             ) : (
               <Image
-                src="/menus.png" // Replace with your hamburger icon image path
+                src="/menus.png" // Hamburger icon for the menu
                 alt="Open Menu"
                 width={30}
                 height={30}
