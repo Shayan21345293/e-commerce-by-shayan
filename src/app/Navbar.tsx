@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 export default function Navbar() {
-  const [menuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="bg-[#FBEBB5]">
-      {/* Navbar Container - Centered */}
+      {/* Navbar Container */}
       <div className="container mx-auto px-4 md:px-10 h-[100px] flex items-center justify-between">
-        {/* Centered Links */}
-        <nav className="flex space-x-20 items-center mx-auto">
+        {/* Centered Links - Desktop */}
+        <nav className="hidden md:flex space-x-10 items-center mx-auto">
           <Link href="/" className="text-black font-medium text-lg hover:underline">
             Home
           </Link>
@@ -26,8 +26,33 @@ export default function Navbar() {
           </Link>
         </nav>
 
+        {/* Hamburger Menu for Mobile */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle Menu"
+            className="focus:outline-none"
+          >
+            {menuOpen ? (
+              <Image
+                src="/menus.png" // Replace with your close icon image path
+                alt="Close Menu"
+                width={30}
+                height={30}
+              />
+            ) : (
+              <Image
+                src="/menus.png" // Replace with your hamburger icon image path
+                alt="Open Menu"
+                width={30}
+                height={30}
+              />
+            )}
+          </button>
+        </div>
+
         {/* Right-aligned Icons */}
-        <div className="flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-6">
           <Link href="/account">
             <Image src="/user.png" alt="User Profile" height={24} width={24} />
           </Link>
