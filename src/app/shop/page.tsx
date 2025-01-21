@@ -1,34 +1,24 @@
-'use client';
-
+'use client'
 import { allproduct } from '@/sanity/lib/quries';
 import { Products } from '../../../types/products';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
 import { client } from '@/sanity/lib/client';
 import createImageUrlBuilder from '@sanity/image-url';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';  // Correct import for the image source type
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 const builder = createImageUrlBuilder(client);
-
-// Use SanityImageSource as the correct type for the function
 const urlFor = (source: SanityImageSource) => builder.image(source);
 
-const Shop = () => {
-  const [products, setProducts] = useState<Products[]>([]);
-  const [cart, setCart] = useState<Products[]>([]);
+interface ShopProps {
+  products: Products[];
+}
 
-  useEffect(() => {
-    async function fetchProduct() {
-      const fetchedProducts: Products[] = await client.fetch(allproduct);
-      setProducts(fetchedProducts);
-    }
-    fetchProduct();
-  }, []);
+const Shop = async () => {
+  // Fetch the products data directly inside the component using async
+  const products: Products[] = await client.fetch(allproduct);
 
-  // Handle adding a product to the cart
   const handleAddToCart = (product: Products) => {
-    setCart((prevCart) => [...prevCart, product]);
-    alert(`Item "${product.title}" added to the cart!`); // Show alert message
+    // Add to cart logic (client-side)
   };
 
   return (
@@ -41,17 +31,15 @@ const Shop = () => {
             key={product._id}
             className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
           >
-            {/* Check if the image exists */}
             {product.image?.asset?._ref ? (
               <Image
-                src={urlFor(product.image.asset).url() || '/fallback.png'}  // Pass the correct object to urlFor
+                src={urlFor(product.image.asset).url() || '/fallback.png'}
                 alt={product.title}
                 width={300}
                 height={300}
                 className="object-cover w-full h-64 rounded-t-lg"
               />
             ) : (
-              // If there's no image, display a fallback placeholder
               <div className="h-64 bg-gray-200 flex items-center justify-center rounded-t-lg">
                 <span className="text-gray-600">No Image Available</span>
               </div>
@@ -62,7 +50,7 @@ const Shop = () => {
             {/* Truncated Description */}
             <p className="text-gray-600 mt-2 line-clamp-2">
               {product.description}
-            </p> {/* Product Description with line clamp */}
+            </p>
 
             <button
               onClick={() => handleAddToCart(product)}
@@ -77,17 +65,7 @@ const Shop = () => {
       {/* Cart */}
       <div className="mt-8">
         <h2 className="text-2xl font-semibold">Shopping Cart</h2>
-        {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <ul>
-            {cart.map((item, index) => (
-              <li key={index} className="py-2">
-                {item.title} - Rs. {item.price}
-              </li>
-            ))}
-          </ul>
-        )}
+        {/* Cart display logic here */}
       </div>
     </div>
   );
