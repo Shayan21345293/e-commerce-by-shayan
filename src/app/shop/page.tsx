@@ -16,8 +16,8 @@ const Shop = () => {
 
   useEffect(() => {
     async function fetchProduct() {
-      const fetchProduct: Products[] = await client.fetch(allproduct);
-      setProducts(fetchProduct);
+      const fetchedProducts: Products[] = await client.fetch(allproduct);
+      setProducts(fetchedProducts);
     }
     fetchProduct();
   }, []);
@@ -38,22 +38,20 @@ const Shop = () => {
             key={product._id}
             className="border p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
           >
+            {/* Check if the image exists */}
             {product.image?.asset?._ref ? (
               <Image
-                src={urlFor(product.image.asset._ref).url() || '/fallback.png'}
+                src={urlFor(product.image.asset._ref).url() || '/fallback.png'} // Fallback URL if the image is not available
                 alt={product.title}
                 width={300}
                 height={300}
                 className="object-cover w-full h-64 rounded-t-lg"
               />
             ) : (
-              <Image
-                src="/fallback.png"
-                alt="Fallback Image"
-                width={300}
-                height={300}
-                className="object-cover w-full h-64 rounded-t-lg"
-              />
+              // If there's no image, display a fallback placeholder
+              <div className="h-64 bg-gray-200 flex items-center justify-center rounded-t-lg">
+                <span className="text-gray-600">No Image Available</span>
+              </div>
             )}
             <h2 className="text-xl font-bold mt-4 text-center">{product.title}</h2>
             <p className="text-gray-500 text-center">{product.price ? `Price: Rs. ${product.price}` : 'Price Not Available'}</p>
