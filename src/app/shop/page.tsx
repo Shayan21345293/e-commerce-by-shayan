@@ -6,9 +6,12 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { client } from '@/sanity/lib/client';
 import createImageUrlBuilder from '@sanity/image-url';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';  // Correct import for the image source type
 
 const builder = createImageUrlBuilder(client);
-const urlFor = (source: any) => builder.image(source);
+
+// Use SanityImageSource as the correct type for the function
+const urlFor = (source: SanityImageSource) => builder.image(source);
 
 const Shop = () => {
   const [products, setProducts] = useState<Products[]>([]);
@@ -41,7 +44,7 @@ const Shop = () => {
             {/* Check if the image exists */}
             {product.image?.asset?._ref ? (
               <Image
-                src={urlFor(product.image.asset._ref).url() || '/fallback.png'} // Fallback URL if the image is not available
+                src={urlFor(product.image.asset).url() || '/fallback.png'}  // Pass the correct object to urlFor
                 alt={product.title}
                 width={300}
                 height={300}
