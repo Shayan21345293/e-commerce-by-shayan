@@ -1,4 +1,3 @@
-// shop/page.tsx (Server Component)
 
 import { allproduct } from '@/sanity/lib/quries';
 import { Products } from '../../../types/products';
@@ -6,7 +5,6 @@ import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import createImageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import Cart from './cart'; // Import the Cart Client Component
 
 const builder = createImageUrlBuilder(client);
 const urlFor = (source: SanityImageSource) => builder.image(source);
@@ -46,7 +44,6 @@ const Shop = async () => {
               {product.description}
             </p>
 
-            <Cart product={product} /> {/* Pass product to the Cart component */}
           </div>
         ))}
       </div>
