@@ -1,25 +1,19 @@
-'use client'
+// shop/page.tsx (Server Component)
+
 import { allproduct } from '@/sanity/lib/quries';
 import { Products } from '../../../types/products';
 import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import createImageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import Cart from './cart'; // Import the Cart Client Component
 
 const builder = createImageUrlBuilder(client);
 const urlFor = (source: SanityImageSource) => builder.image(source);
 
-interface ShopProps {
-  products: Products[];
-}
-
 const Shop = async () => {
-  // Fetch the products data directly inside the component using async
+  // Fetch the products data directly inside the component
   const products: Products[] = await client.fetch(allproduct);
-
-  const handleAddToCart = (product: Products) => {
-    // Add to cart logic (client-side)
-  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -52,20 +46,9 @@ const Shop = async () => {
               {product.description}
             </p>
 
-            <button
-              onClick={() => handleAddToCart(product)}
-              className="w-full mt-4 bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-            >
-              Add to Cart
-            </button>
+            <Cart product={product} /> {/* Pass product to the Cart component */}
           </div>
         ))}
-      </div>
-
-      {/* Cart */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold">Shopping Cart</h2>
-        {/* Cart display logic here */}
       </div>
     </div>
   );
